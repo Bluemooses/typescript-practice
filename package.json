@@ -25,7 +25,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "server": "node server/server.tsx",
+    "server": "node server/server",
     "client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -1,12 +1,7 @@
-import "./App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { BrowserRouter as Router } from "react-router-dom";
-//Components
-import Homepage from "../Components/Homepage/Homepage";
-import Nav from "../Components/Nav/Nav";
 
-function App() {
+const Login = () => {
   const [user, setUser] = useState("");
 
   useEffect(() => {
@@ -21,15 +16,11 @@ function App() {
     }
     fetchUser();
   }, [user]);
-
   return (
-    <div className="App">
-      <Router>
-        <Nav />
-        <Homepage />
-      </Router>
+    <div>
+      <p>Login page</p>
     </div>
   );
-}
+};
 
-export default App;
+export default Login;
