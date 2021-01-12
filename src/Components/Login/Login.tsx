@@ -1,20 +1,19 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Input,
-} from "@chakra-ui/react";
+import { Text, FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
 
 const Login = () => {
   return (
-    <FormControl id="email">
-      <FormLabel>Email address</FormLabel>
-      <Input type="email" />
-      <FormHelperText>We'll never share your email.</FormHelperText>
-    </FormControl>
+    <>
+      <FormControl size="sm" id="login">
+        <FormLabel>Login</FormLabel>
+        <Input placeholder="Email Address" />
+        <Input placeholder="Password" />
+        <Button>Login</Button>
+      </FormControl>
+
+      <Text as="i" fontSize="xs">
+        Not a member? <Button size="xs">Register</Button>
+      </Text>
+    </>
   );
 };
 

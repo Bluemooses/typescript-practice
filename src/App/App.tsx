@@ -10,6 +10,7 @@ import {
 //Components
 import Homepage from "../Components/Homepage/Homepage";
 import Nav from "../Components/Nav/Nav";
+import Login from "../Components/Login/Login";
 
 function App() {
   const [user, setUser] = useState("");
@@ -35,6 +36,7 @@ function App() {
         <Switch>
           <Redirect exact from="/" to="/home" />
           <Route exact path="/home" component={Homepage} />
+          <Route exact path="/login" component={Login} />
         </Switch>
       </Router>
     </div>
