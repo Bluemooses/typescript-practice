@@ -1,25 +1,20 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Input,
+} from "@chakra-ui/react";
 
 const Login = () => {
-  const [user, setUser] = useState("");
-
-  useEffect(() => {
-    const config = {
-      headers: { "Content-Type": "application/json" },
-      withCredentials: true,
-    };
-    async function fetchUser() {
-      const response = await axios.get("/api/user", config);
-      const userObject = response.data;
-      setUser(userObject);
-    }
-    fetchUser();
-  }, [user]);
   return (
-    <div>
-      <p>Login page</p>
-    </div>
+    <FormControl id="email">
+      <FormLabel>Email address</FormLabel>
+      <Input type="email" />
+      <FormHelperText>We'll never share your email.</FormHelperText>
+    </FormControl>
   );
 };
 

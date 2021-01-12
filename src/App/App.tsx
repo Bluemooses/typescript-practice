@@ -1,7 +1,12 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { BrowserRouter as Router } from "react-router-dom";
+import {
+  Route,
+  Switch,
+  BrowserRouter as Router,
+  Redirect,
+} from "react-router-dom";
 //Components
 import Homepage from "../Components/Homepage/Homepage";
 import Nav from "../Components/Nav/Nav";
@@ -20,13 +25,17 @@ function App() {
       setUser(userObject);
     }
     fetchUser();
+    console.log(user);
   }, [user]);
 
   return (
     <div className="App">
       <Router>
         <Nav />
-        <Homepage />
+        <Switch>
+          <Redirect exact from="/" to="/home" />
+          <Route exact path="/home" component={Homepage} />
+        </Switch>
       </Router>
     </div>
   );

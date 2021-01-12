@@ -1,7 +1,10 @@
+import { Link } from "react-router-dom";
+
 const Nav = () => {
   return (
     <div>
-      <p>Hello from Nav</p>
+      <Link to="/store">Shop Now</Link>
+      <Link to="/login">Login</Link>
     </div>
   );
 };
