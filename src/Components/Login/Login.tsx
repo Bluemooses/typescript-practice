@@ -1,35 +1,53 @@
 import { Text, FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 
-const Login = () => {
+const LoginPage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [signUpData, setSignUpData] = useState({
-    userName: "",
+    username: "",
     password: "",
   });
+
+  const config = {
+    headers: { "Content-Type": "application/json" },
+    withCredentials: true,
+  };
+
+  const login = () => {
+    const data = axios.post(
+      "/api/user/login",
+      { username: signUpData.username, password: signUpData.password },
+      config
+    );
+    console.log(config);
+    console.log(data);
+  };
+
+  const goToRegisterPage = () => {
+    history.push("/user/register");
+  };
 
   return (
     <>
       <FormControl size="sm" id="login">
         <FormLabel>Login</FormLabel>
         <Input
-          onChange={(event) => (signUpData.userName = event.target.value)}
+          onChange={(event) => (signUpData.username = event.target.value)}
           placeholder="Email Address"
         />
         <Input
+          type="password"
           onChange={(event) => (signUpData.password = event.target.value)}
           placeholder="Password"
         />
         <Button
           onClick={() => {
-            console.log(
-              "click",
-              "username",
-              signUpData.userName,
-              "password",
-              signUpData.password
-            );
+            login();
+            axios.post("/user/login", signUpData);
           }}
         >
           Login
@@ -37,10 +55,13 @@ const Login = () => {
       </FormControl>
 
       <Text as="i" fontSize="xs">
-        Not a member? <Button size="xs">Register</Button>
+        Not a member?{" "}
+        <Button onClick={goToRegisterPage} size="xs">
+          Register
+        </Button>
       </Text>
     </>
   );
 };
 
-export default Login;
+export default LoginPage;

@@ -12,6 +12,7 @@ const router = express.Router();
 router.get("/", rejectUnauthenticated, (req, res) => {
   // Send back user object from the session (previously queried from the database)
   res.send(req.user);
+  console.log("hit");
 });
 
 // Handles POST request with new user data
@@ -33,6 +34,7 @@ router.post("/register", (req, res, next) => {
 // this middleware will run our POST if successful
 // this middleware will send a 404 if not successful
 router.post("/login", userStrategy.authenticate("local"), (req, res) => {
+  console.log("hit");
   res.sendStatus(200);
 });
 

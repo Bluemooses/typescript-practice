@@ -11,24 +11,9 @@ import {
 import Homepage from "../Components/Homepage/Homepage";
 import Nav from "../Components/Nav/Nav";
 import Login from "../Components/Login/Login";
+import RegisterPage from "../Components/RegisterPage/RegisterPage";
 
 function App() {
-  const [user, setUser] = useState("");
-
-  useEffect(() => {
-    const config = {
-      headers: { "Content-Type": "application/json" },
-      withCredentials: true,
-    };
-    async function fetchUser() {
-      const response = await axios.get("/api/user", config);
-      const userObject = response.data;
-      setUser(userObject);
-    }
-    fetchUser();
-    console.log(user);
-  }, [user]);
-
   return (
     <div className="App">
       <Router>
@@ -37,6 +22,7 @@ function App() {
           <Redirect exact from="/" to="/home" />
           <Route exact path="/home" component={Homepage} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/user/register" component={RegisterPage} />
         </Switch>
       </Router>
     </div>
